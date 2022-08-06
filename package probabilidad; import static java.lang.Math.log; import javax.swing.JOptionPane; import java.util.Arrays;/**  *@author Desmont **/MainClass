@@ -13,7 +13,7 @@ public class Probabilidad {
         double k;
         ndatos = Integer.parseInt(JOptionPane.showInputDialog("Ingrese la cantidad de datos:"));
         k = 1 + (3.322 * Math.log10(ndatos));
-        double v = Math.round(k);
+        int v = (int) Math.round(k);
         double Matriz [] = new double [ndatos];
         int cont1 = 0;
         for(int i = 0; i < ndatos; i++){
@@ -35,5 +35,56 @@ public class Probabilidad {
         JOptionPane.showMessageDialog(null, "El rango es de: " + rango);
         JOptionPane.showMessageDialog(null, "La amplitud es de: " + amplitud);
         JOptionPane.showMessageDialog(null, "El numero de clases es: " + v);
+        double Li [] = new double [v];
+        int con = 1;
+        Li[0] = Matriz[0];
+        int con1 = 1;
+        //Agregar valores en arrego de Lim inf
+        for(int i = 0; i < v; i++){
+            JOptionPane.showMessageDialog(null, "EL limite inferior de la clase " + con + " es: " + Li[i]);
+            if(con1 < v){
+                Li[con1] = Li[con1 - 1] + amplitud;
+                con++;
+                con1++;
+            }else{
+                
+            }
+        }
+        double Ls[] = new double[v];
+        int con2 = 1;
+        Ls[0] = Li[1];
+        int con3 = 1;
+        //Agregar valores en arreglo de Lim sup
+        for(int i= 0; i < v; i++){
+            JOptionPane.showMessageDialog(null, "El limite superior de la clase " + con2 + " es: " + Ls[i]);
+            if(con3 < v){
+                Ls[con3] = Ls[con3 - 1] + amplitud;
+                con2++;
+                con3++;
+            }else{
+                
+            }
+        }
+        double fi[]  = new double[v];
+        int con5 = 1;
+        int con6 = 0;
+        for(int i = 0; i < v; i++){
+            JOptionPane.showMessageDialog(null, "El valor de fi de la clase " + con5 + " es: ");
+            con5++;
+        }
+        double Fi[] = new double[v];
+        double xi[] = new double[v];
+        int con4 = 1;
+        //Agregar valores en el arreglo de xi
+        for(int i = 0; i < v; i++){
+            xi[i] = (Li[i] + Ls[i]) / 2;
+            JOptionPane.showMessageDialog(null, "El valor de xi en la posición " + con4 + " es: " + xi[i]);
+            con4++;
+        }
+        double fr[] = new double[v];
+        double  Fr[] = new double[v];
+        double fixi[] = new double[v];
+        double grados[] = new double[v];
+        double gradosAcum[] = new double[v];
     }
 }
